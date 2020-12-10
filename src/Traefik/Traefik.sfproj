@@ -24,9 +24,6 @@
     <None Include="Scripts\Get-TraefikBinary.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ApplicationPackageRoot\TraefikPkg\Code\certs\gdig2.crt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="ApplicationPackageRoot\TraefikPkg\Code\traefik.exe" />
     <Content Include="ApplicationPackageRoot\TraefikPkg\Code\TraefikPreConfiguratorWindows.exe" />
     <Content Include="ApplicationPackageRoot\TraefikPkg\Code\TraefikPreConfiguratorWindows.exe.config" />
@@ -42,9 +39,6 @@
     <Content Include="packages.config" />
     <Content Include="PublishProfiles\Production.xml" />
     <Content Include="PublishProfiles\Staging.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ApplicationPackageRoot\TraefikPkg\Code\backupCerts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>

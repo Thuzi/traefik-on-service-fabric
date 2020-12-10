@@ -65,10 +65,10 @@ Task("Package")
     EnsureDirectoryExists("./artifacts/ServiceFabric");
     CopyDirectory($"{sfPackageRoot}pkg/Release", "./artifacts/ServiceFabric");
 
-    UpdateServiceManifest(File($"./artifacts/ServiceFabric/AgentPkg/ServiceManifest.xml"));
+    UpdateServiceManifest(File($"./artifacts/ServiceFabric/TraefikPkg/ServiceManifest.xml"));
     UpdateAppManifest(File("./artifacts/ServiceFabric/ApplicationManifest.xml"));
 
-    OctoPack("Datadog.ConfigUpdater", new OctopusPackSettings
+    OctoPack("ServiceFabric.Traefik", new OctopusPackSettings
 			{
 				Version = semVer.MajorMinorPatch,
 				BasePath = "./artifacts/ServiceFabric",
@@ -100,7 +100,7 @@ Task("Release")
 				});
 		}
 
-		OctoCreateRelease("ServiceFabric - Datadog Config Updater", new CreateReleaseSettings
+		OctoCreateRelease("ServiceFabric - Traefik", new CreateReleaseSettings
 		{
 			Server = "https://octo.thuzi.com/",
 			ApiKey = EnvironmentVariable("OCTO_API_KEY"),
@@ -155,7 +155,7 @@ void UpdateAppManifest(FilePath file)
 
 	
 		XmlPoke(file, 
-			$"//x:ServiceManifestRef[@ServiceManifestName=\"AgentPkg\"]/@ServiceManifestVersion", 
+			$"//x:ServiceManifestRef[@ServiceManifestName=\"TraefikPkg\"]/@ServiceManifestVersion", 
 			semVer.MajorMinorPatch, 
 			new XmlPokeSettings
 			{

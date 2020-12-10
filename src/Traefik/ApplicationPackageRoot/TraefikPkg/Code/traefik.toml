@@ -108,7 +108,7 @@ address = ":8080"
   # Optional
   # Default: false
   #
-  debug = true
+  debug = false
 
 ################################################################
 # Service Fabric provider
