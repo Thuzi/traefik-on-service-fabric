@@ -355,3 +355,5 @@ MigrationBackup/
 *.crt
 *.pem
 *.key
+
+artifacts/
