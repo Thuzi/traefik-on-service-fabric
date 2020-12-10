@@ -24,7 +24,7 @@ pipeline {
 				}
 				powershell(returnStatus: false, script: '''
 					nuget.exe install Cake.LongPath.Module -PreRelease -ExcludeVersion -OutputDirectory "$(get-location)/tools/modules/" -Source https://www.nuget.org/api/v2/
-					./build.ps1 -target="ci"
+					./build.ps1 -target="build"
 				''')
 				//record ci issues to the build.
 				/*
