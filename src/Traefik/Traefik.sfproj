@@ -27,8 +27,6 @@
     <Content Include="ApplicationPackageRoot\TraefikPkg\Code\traefik.exe" />
     <Content Include="ApplicationPackageRoot\TraefikPkg\Code\TraefikPreConfiguratorWindows.exe" />
     <Content Include="ApplicationPackageRoot\TraefikPkg\Code\TraefikPreConfiguratorWindows.exe.config" />
-    <Content Include="ApplicationPackageRoot\TraefikPkg\Code\TraefikPreConfiguratorWindows.pdb" />
-    <Content Include="ApplicationPackageRoot\TraefikPkg\Code\TraefikPreConfiguratorWindows.xml" />
     <Content Include="ApplicationPackageRoot\TraefikPkg\Config\Settings.xml" />
     <Content Include="ApplicationPackageRoot\TraefikPkg\Code\traefik.toml" />
     <Content Include="ApplicationPackageRoot\TraefikPkg\ServiceManifest.xml" />
