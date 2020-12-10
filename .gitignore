@@ -350,5 +350,8 @@ MigrationBackup/
 .ionide/
 
 *.DS_Store
-src/Traefik/ApplicationPackageRoot/Watchdog/Code/traefik-appinsights-watchdog.exe
+!src/Traefik/ApplicationPackageRoot/Watchdog/Code/traefik-appinsights-watchdog.exe
 !src/Traefik/ApplicationPackageRoot/TraefikPkg/
+*.crt
+*.pem
+*.key
