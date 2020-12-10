@@ -21,7 +21,7 @@ Task("Build")
     .Does(() =>
 {
 
-	DotNetCoreRestore("./src/Traefik.sln")
+	DotNetCoreRestore("./src/Traefik.sln");
 
     MSBuild($"{sfPackageRoot}Traefik.sfproj", new MSBuildSettings{
         Configuration = configuration,
