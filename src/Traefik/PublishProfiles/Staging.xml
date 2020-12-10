@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">
+  <ClusterConnectionParameters ConnectionEndpoint="cluster-a.events-staging.thuzi.com:19000" X509Credential="true" ServerCertThumbprint="17473DA12C1BC9C539FC2E643E4DDC178C69B799" FindType="FindByThumbprint" FindValue="59635D6DC511F5EC154ED0C2FE21998876D5DEAE" StoreLocation="CurrentUser" StoreName="My" />
+  <ApplicationParameterFile Path="..\ApplicationParameters\Staging.xml" />
+  <UpgradeDeployment Mode="Monitored" Enabled="true">
+    <Parameters FailureAction="Rollback" Force="True" />
+  </UpgradeDeployment>
+</PublishProfile>

@@ -1,0 +1,365 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TraefikPreConfiguratorWindows</name>
+    </assembly>
+    <members>
+        <member name="T:TraefikPreConfiguratorWindows.CallInfo">
+            <summary>
+            Holds information such as file name, line number, and method name of the caller.
+            </summary>
+        </member>
+        <member name="P:TraefikPreConfiguratorWindows.CallInfo.FileName">
+            <summary>
+            Gets or sets the file name.
+            </summary>
+        </member>
+        <member name="P:TraefikPreConfiguratorWindows.CallInfo.FilePath">
+            <summary>
+            Gets or sets the file path.
+            </summary>
+        </member>
+        <member name="P:TraefikPreConfiguratorWindows.CallInfo.LineNumber">
+            <summary>
+            Gets or sets the line number.
+            </summary>
+        </member>
+        <member name="P:TraefikPreConfiguratorWindows.CallInfo.MethodName">
+            <summary>
+            Gets or sets the method name.
+            </summary>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CallInfo.Site(System.String,System.String,System.Int32)">
+            <summary>
+            Builds a CallInfo object with the necessary details for logging.
+            </summary>
+            <param name="memberName">CallerMemberName parameter.</param>
+            <param name="sourceFilePath">CallerFilePath parameter.</param>
+            <param name="sourceLineNumber">CallerLineNumber parameter.</param>
+            <returns>A CallInfo object.</returns>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CallInfo.ToString">
+            <summary>
+            Returns a formatted string.
+            </summary>
+            <returns>A formatted string.</returns>
+        </member>
+        <member name="T:TraefikPreConfiguratorWindows.CertHelpers">
+            <summary>
+            Certificate helpers.
+            </summary>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CertHelpers.FindCertificates(System.Object,System.Security.Cryptography.X509Certificates.X509FindType,System.Security.Cryptography.X509Certificates.StoreName,System.Security.Cryptography.X509Certificates.StoreLocation)">
+            <summary>
+            Finds the certificates with given parameters.
+            </summary>
+            <param name="certificateFindValue">The certificate find value. This is the value we search on.</param>
+            <param name="x509FindType">Type of the X509 find.</param>
+            <param name="storeName">Name of the store.</param>
+            <param name="storeLocation">The store location.</param>
+            <returns>Collection of certificates.</returns>
+        </member>
+        <member name="T:TraefikPreConfiguratorWindows.CertificateHandler">
+            <summary>
+            Performs Certificate related tasks.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.CertificateHandler.PrivateKeyExportArguments">
+            <summary>
+            Arguments to be used to extract .key out of .Pfx.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.CertificateHandler.PublicKeyExportArguments">
+            <summary>
+            Arguments to be used to extract .crt out of .Pfx.
+            </summary>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CertificateHandler.ProcessAsync(System.String,System.String,System.Collections.Generic.List{System.String},System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Processes the certificate management.
+            </summary>
+            <param name="directoryPath">Directory to put the certificatex in.</param>
+            <param name="certConfiguration">Certificate configuration. This is a combination of comma separated values in following format
+            *certFileName*;*SourceOfCert*;*CertIdentifierInSource*.</param>
+            <param name="keyVaultUris">KeyVault uris if key vault is to be used.</param>
+            <param name="keyVaultClientId">Application client Id to access keyvault.</param>
+            <param name="keyVaultClientSecret">Application client secret to access keyvault.</param>
+            <param name="keyVaultClientCert">Application client certificate thumbprint if the keyvault app has certificate credentials.</param>
+            <param name="useManagedIdentity">Use managed identity.</param>
+            <returns>Exit code for the operation.</returns>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CertificateHandler.GetTokenFromClientSecretAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets the token from client secret. This method is used as AuthCallback for KeyVault client.
+            </summary>
+            <param name="authority">The authority.</param>
+            <param name="resource">The resource.</param>
+            <param name="clientId">The client identifier.</param>
+            <param name="clientSecret">The client secret.</param>
+            <returns>Access token.</returns>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CertificateHandler.GetTokenFromClientCertificateAsync(System.String,System.String,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Gets the token from client certificate. This method is used as AuthCallback for KeyVault client.
+            </summary>
+            <param name="authority">The authority.</param>
+            <param name="resource">The resource.</param>
+            <param name="clientId">The client identifier.</param>
+            <param name="certificate">The certificate.</param>
+            <returns>Access token.</returns>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CertificateHandler.LocalMachineCertHandlerAsync(System.String,System.String,System.String)">
+            <summary>
+            Extracts PFX from a local cert present in LocalMachine store under My.
+            </summary>
+            <param name="certificateName">Name of the certificate.</param>
+            <param name="certificateIdentitier">The certificate identifier.</param>
+            <param name="fullDirectoryPath">The full directory path to drop PFX at.</param>
+            <returns>Exit code for the operation.</returns>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CertificateHandler.KeyVaultCertHandlerAsync(System.String,System.String,System.String,Microsoft.Azure.KeyVault.KeyVaultClient,System.String)">
+            <summary>
+            Extracts PFX from a certificate uploaded or generated from KeyVault. This does not support certs uploaded into KeyVault using secret.
+            </summary>
+            <param name="certificateName">Name of the certificate.</param>
+            <param name="certificateSecretName">Secret name of the certificate. This is usually certificate name.</param>
+            <param name="fullDirectoryPath">The full directory path to drop PFX at.</param>
+            <param name="keyVaultClient">The key vault client.</param>
+            <param name="keyVaultUrl">The key vault URL.</param>
+            <returns>Exit code for the operation.</returns>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CertificateHandler.SaveCertificatePrivateKeyToDisk(System.Byte[],System.String,System.String)">
+            <summary>
+            Saves the certificate private key in PFX format to disk.
+            </summary>
+            <param name="rawCertData">Raw certificate bytes.</param>
+            <param name="certificateName">Name of the certificate (This is the name of the pfx file).</param>
+            <param name="fullDirectoryPath">The full directory path.</param>
+            <returns>Exit code for the operation.</returns>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CertificateHandler.ConvertPfxIntoPemFormat(System.String,System.String,System.String,System.String)">
+            <summary>
+            Converts the PFX into pem format and extracts the Private key into .key and public in .crt format.
+            </summary>
+            <param name="certificateName">Name of the certificate.</param>
+            <param name="certDirectoryPath">The full directory path for the PFX file. This is also the same path where the PEM and CRT files will be placed.</param>
+            <param name="opensslExeDirectory">The openssl executable directory.</param>
+            <param name="password">PFX password.</param>
+            <returns>Exit code for the operation.</returns>
+        </member>
+        <member name="T:TraefikPreConfiguratorWindows.CommandOptionExtensions">
+            <summary>
+            Command option extnsions.
+            </summary>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CommandOptionExtensions.GetValueExtended(Microsoft.Extensions.CommandLineUtils.CommandOption,System.Boolean)">
+            <summary>
+            Gets the value for the command option based if the value is to be fetched from commandline or Environment varibles.
+            </summary>
+            <param name="commandOption">The command option.</param>
+            <param name="useEnvironmentVariable">True, if environment variable is to be used instead of command line.</param>
+            <returns>Value for the command option.</returns>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CommandOptionExtensions.GetValuesExtended(Microsoft.Extensions.CommandLineUtils.CommandOption,System.Boolean)">
+            <summary>
+            Gets the values for the command option based if the value is to be fetched from commandline or Environment varibles.
+            </summary>
+            <param name="commandOption">The command option.</param>
+            <param name="useEnvironmentVariable">True, if environment variable is to be used instead of command line.</param>
+            <returns>Value for the command option.</returns>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CommandOptionExtensions.HasValueExtended(Microsoft.Extensions.CommandLineUtils.CommandOption,System.Boolean)">
+            <summary>
+            Determines whether the command option has value or not based on if the value needs to be pulled from command line of environment variables.
+            </summary>
+            <param name="commandOption">The command option.</param>
+            <param name="useEnvironmentVariable">if set to <c>true</c> [use environment variable].</param>
+            <returns>
+              <c>true</c> if command option has value; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.CommandOptionExtensions.IsSwitchSpecified(Microsoft.Extensions.CommandLineUtils.CommandOption,System.Boolean)">
+            <summary>
+            Checks if a switch was specified by the user.
+            </summary>
+            <param name="commandOption">Command option.</param>
+            <param name="useEnvironmentVariable">True if environment variable should be checked.</param>
+            <returns>True if the switch was specified.</returns>
+        </member>
+        <member name="T:TraefikPreConfiguratorWindows.ExitCode">
+            <summary>
+            Exit codes.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.Success">
+            <summary>
+            Process completed successfully.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.UnknownFailure">
+            <summary>
+            Unknown failure occurred during execution.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.DirectoryPathMissing">
+            <summary>
+            Directory path is missing in the configuration.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.KeyVaultConfigurationIncomplete">
+            <summary>
+            KeyVault configuration is incomplete.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.InvalidCertConfiguration">
+            <summary>
+            Invalid certificates configuration.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.CertificateMissingFromSource">
+            <summary>
+            Certificate could not the be found in the given source (localmachine or KeyVault).
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.PrivateKeyMissingOnCertificate">
+            <summary>
+            Private key missing for the ceritifcate to export.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.KeyVaultOperationFailed">
+            <summary>
+            KeyVault operation failed.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.FailedToDecodeCertFromKeyVault">
+            <summary>
+            Failed to decode certificate from keyvault. This usually points to certificate uploaded using secrets and not certificate option on keyvault.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.PrivateKeyExtractionFailed">
+            <summary>
+            Private key extraction for the certificate.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.PublicKeyExtractionFailed">
+            <summary>
+            Public key extraction failed for the certificate.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.ExitCode.UnsupportedCertSource">
+            <summary>
+            Unsupported certificate source. Currently supported sources are LocalMachine and KeyVault.
+            </summary>
+        </member>
+        <member name="T:TraefikPreConfiguratorWindows.Logger">
+            <summary>
+            Trace Logger implementations.
+            </summary>
+        </member>
+        <member name="F:TraefikPreConfiguratorWindows.Logger.telemetryClient">
+            <summary>
+            The telemetry client used to log to Application insights.
+            </summary>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Logger.ConfigureLogger(System.String)">
+            <summary>
+            Starts the Application Insights module.
+            </summary>
+            <param name="instrumentationKey">Application insights instrumentation key.</param>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Logger.LogVerbose(TraefikPreConfiguratorWindows.CallInfo,System.String,System.Object[])">
+            <summary>
+            Logs the verbose message.
+            </summary>
+            <param name="callInfo">The call information.</param>
+            <param name="messageFormat">The message format.</param>
+            <param name="arguments">The arguments.</param>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Logger.LogInfo(TraefikPreConfiguratorWindows.CallInfo,System.String,System.Object[])">
+            <summary>
+            Logs the information.
+            </summary>
+            <param name="callInfo">The call information.</param>
+            <param name="messageFormat">The message format.</param>
+            <param name="arguments">The arguments.</param>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Logger.LogWarning(TraefikPreConfiguratorWindows.CallInfo,System.String,System.Object[])">
+            <summary>
+            Logs the warning.
+            </summary>
+            <param name="callInfo">The call information.</param>
+            <param name="messageFormat">The message format.</param>
+            <param name="arguments">The arguments.</param>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Logger.LogError(TraefikPreConfiguratorWindows.CallInfo,System.String,System.Object[])">
+            <summary>
+            Logs the error.
+            </summary>
+            <param name="callInfo">The call information.</param>
+            <param name="messageFormat">The message format.</param>
+            <param name="arguments">The arguments.</param>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Logger.LogError(TraefikPreConfiguratorWindows.CallInfo,System.Exception)">
+            <summary>
+            Logs the error.
+            </summary>
+            <param name="callInfo">The call information.</param>
+            <param name="exp">The exception.</param>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Logger.LogError(TraefikPreConfiguratorWindows.CallInfo,System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs the error
+            .</summary>
+            <param name="callInfo">The call information.</param>
+            <param name="exp">The exception.</param>
+            <param name="customMessageFormat">The custom message format.</param>
+            <param name="arguments">The arguments.</param>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Logger.Flush">
+            <summary>
+            Flushes the logs to the backend diagnostics engine.
+            </summary>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Logger.Log(TraefikPreConfiguratorWindows.CallInfo,System.Diagnostics.TraceLevel,System.String)">
+            <summary>
+            Logs message to underlying loggers.
+            </summary>
+            <param name="callInfo">The call information.</param>
+            <param name="traceLevel">The trace level.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Logger.GetMessage(System.String,System.Object[])">
+            <summary>
+            Creates message from format.
+            </summary>
+            <param name="messageFormat">Message format.</param>
+            <param name="arguments">Message arguments.</param>
+            <returns>String message.</returns>
+        </member>
+        <member name="T:TraefikPreConfiguratorWindows.Program">
+            <summary>
+            Main program execution class.
+            </summary>
+        </member>
+        <member name="M:TraefikPreConfiguratorWindows.Program.Main(System.String[])">
+            <summary>
+            Defines the entry point of the application.
+            </summary>
+            <param name="args">The arguments.</param>
+            <remarks>
+            Possible Arguments
+            1) If you want to dump the certs from local machine only and make it work for one environment config.
+                --ConfigureCerts "Certs" --ApplicationInsightsKey "AIKeyHere" --CertsToConfigure "ClusterCert;MyLocalMachine;ClusterCertThumbprint,SSLCert;MyLocalMachine;SSLCertThumbprint"
+            2) If you want to dump the certs from local machine and KeyVault and make it work for one environment config.
+                --ConfigureCerts "Certs" --ApplicationInsightsKey "AIKeyHere" --CertsToConfigure "ClusterCert;MyLocalMachine;ClusterCertThumbprint,SSLCert;KeyVault;SSLSecretName" --KeyVaultUri "https://dummyvault.vault.azure.net/" --KeyVaultClientId "1dc8b8b3-be3e-482a-b56b-9092c91aa4b2" -KeyVaultClientSecret "keyvaultappsecret"
+            3) If you want to dump the certs from local machine and make it work for different environments having different configs.
+                a) Set the arguments to --UseEnvironmentVariables (or -UseEnv)
+                b) And set the Environment variables
+                    i) ConfigureCerts to Certs
+                    ii) ApplicationInsightsKey to AiKeyHere
+                    iii) CertsToConfigure to ClusterCert;MyLocalMachine;ClusterCertThumbprint,SSLCert;MyLocalMachine;SSLCertThumbprint
+                   Similarily other options can be set in environment variables to enable rest of the options like KeyVault.
+            </remarks>
+        </member>
+    </members>
+</doc>

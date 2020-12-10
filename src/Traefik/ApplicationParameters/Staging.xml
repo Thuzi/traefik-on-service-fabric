@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Name="fabric:/Traefik" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Parameters>
+    <Parameter Name="TraefikCertsToConfigure" Value="sslcert;KeyVault;events-domain-wildcard,clustercert;KeyVault;cluster-client-cert"/>
+    <Parameter Name="TraefikKeyVaultUri" Value="https://ep-cluster-staging-kv.vault.azure.net/"/>
+    <Parameter Name="TraefikKeyVaultClientId" Value="78314d9c-a8b1-4894-b792-3c1f1bd61de3"/>
+    <Parameter Name="TraefikKeyVaultClientSecret" Value=""/>
+    <Parameter Name="TraefikUseManagedIdentityAuth" Value="false"/>
+  </Parameters>
+</Application>
