@@ -20,7 +20,7 @@ Task("Build")
     .IsDependentOn("Clean")
     .Does(() =>
 {
-
+	NuGetRestore($"./src/Traefik.sln");
 	MSBuild($"./src/Traefik.sln");
 
     MSBuild($"{sfPackageRoot}Traefik.sfproj", new MSBuildSettings{
