@@ -1,5 +1,5 @@
   
-mode: Mainline
+mode: ContinuousDelivery
 increment: Patch
 next-version: 1.0.18
 commit-message-incrementing: Enabled
