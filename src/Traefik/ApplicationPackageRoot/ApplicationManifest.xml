@@ -29,7 +29,7 @@
     <ConfigOverrides />
     <EnvironmentOverrides CodePackageRef="Code">
       <EnvironmentVariable Name="UseManagedIdentity" Value="[TraefikUseManagedIdentityAuth]"/>
-      <EnvironmentVariable Name="CertsToConfigure" Value="[TraefikCertsToConfigure]"/>
+      <EnvironmentVariable Name="CertsToConfigure" Value="[TraefikCertsToConfigure]"/> 
       <EnvironmentVariable Name="ConfigureCerts" Value="certs"/>
       <EnvironmentVariable Name="KeyVaultUri" Value="[TraefikKeyVaultUri]"/>
       <EnvironmentVariable Name="KeyVaultClientSecret" Value="[TraefikKeyVaultClientSecret]"/>
