@@ -1,8 +1,7 @@
-  
-mode: ContinuousDelivery
+mode: Mainline
 increment: Patch
-next-version: 1.0.18
+next-version: 1.7.1
 commit-message-incrementing: Enabled
 branches: {}
-ignore: 
-   sha: []
+ignore:
+  sha: []
