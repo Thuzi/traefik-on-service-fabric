@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Name="fabric:/Traefik" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
-    <Parameter Name="TraefikCertsToConfigure" Value="sslcert;KeyVault;eventsWildcard,clustercert;KeyVault;cluster-client"/>
+    <Parameter Name="TraefikCertsToConfigure" Value="sslcert;KeyVault;eventsWildcard,clustercert,floridasupercon-cert-prod;KeyVault;cluster-client"/>
     <Parameter Name="TraefikKeyVaultUri" Value="https://platform-production.vault.azure.net/"/>
     <Parameter Name="TraefikKeyVaultClientId" Value="2f7c6d43-2219-4371-88a8-825960dcb0bc"/>
     <Parameter Name="TraefikKeyVaultClientSecret" Value=""/>
