@@ -54,6 +54,9 @@ address = ":443"
       [[entryPoints.https.tls.certificates]]
       certFile = "certs/sslcert.crt"
       keyFile = "certs/sslcert.key"
+      [[entryPoints.http.tls.certificates]]
+      certFile = "certs/superconCert.cert"
+      keyFile = "certs/superconCert.key"
 [entryPoints.traefik]
 address = ":8080"
 
