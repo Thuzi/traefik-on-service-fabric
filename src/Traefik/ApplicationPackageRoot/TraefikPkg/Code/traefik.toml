@@ -57,6 +57,12 @@ address = ":443"
       [[entryPoints.https.tls.certificates]]
       certFile = "certs/supercon.crt"
       keyFile = "certs/supercon.key"
+      [[entryPoints.https.tls.certificates]]
+      certFile = "certs/pax-2021.crt"
+      keyFile = "certs/pax-2021.key"
+      [[entryPoints.https.tls.certificates]]
+      certFile = "certs/equiatana-2021.crt"
+      keyFile = "certs/equitana-2021.key"
 [entryPoints.traefik]
 address = ":8080"
 
