@@ -63,6 +63,9 @@ address = ":443"
       [[entryPoints.https.tls.certificates]]
       certFile = "certs/equitana-2021.crt"
       keyFile = "certs/equitana-2021.key"
+      [[entryPoints.https.tls.certificates]]
+      certFile = "certs/complexcon-2021.crt"
+      keyFile = "certs/complexcon-2021.key"
 [entryPoints.traefik]
 address = ":8080"
 
