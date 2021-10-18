@@ -66,6 +66,9 @@ address = ":443"
       [[entryPoints.https.tls.certificates]]
       certFile = "certs/complexcon-2021.crt"
       keyFile = "certs/complexcon-2021.key"
+      [[entryPoints.https.tls.certificates]]
+      certFile = "certs/eccc-2021.crt"
+      keyFile = "certs/eccc-2021.key"
 [entryPoints.traefik]
 address = ":8080"
 
