@@ -72,6 +72,12 @@ address = ":443"
       [[entryPoints.https.tls.certificates]]
       certFile = "certs/c2e2-2021.crt"
       keyFile = "certs/c2e2-2021.key"
+      [[entryPoints.https.tls.certificates]]
+      certFile = "certs/mcm-london-2022.crt"
+      keyFile = "certs/mcm-london-2022.key"
+      [[entryPoints.https.tls.certificates]]
+      certFile = "certs/starwars-celebration-2022.crt"
+      keyFile = "certs/starwars-celebration-2022.key"
 [entryPoints.traefik]
 address = ":8080"
 
