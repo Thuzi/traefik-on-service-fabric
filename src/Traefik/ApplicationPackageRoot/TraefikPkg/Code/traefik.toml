@@ -78,6 +78,9 @@ address = ":443"
       [[entryPoints.https.tls.certificates]]
       certFile = "certs/starwars-celebration-2022.crt"
       keyFile = "certs/starwars-celebration-2022.key"
+      [[entryPoints.https.tls.certificates]]
+      certFile = "certs/egx-2022.crt"
+      keyFile = "certs/egx-2022.key"
 [entryPoints.traefik]
 address = ":8080"
 
