@@ -81,6 +81,9 @@ address = ":443"
       [[entryPoints.https.tls.certificates]]
       certFile = "certs/egx-2022.crt"
       keyFile = "certs/egx-2022.key"
+      [[entryPoints.https.tls.certificates]]
+      certFile = "certs/disneybridge-2023.crt"
+      keyFile = "certs/disneybridge-2023.key"
 [entryPoints.traefik]
 address = ":8080"
 
